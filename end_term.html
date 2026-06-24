@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Even or Odd</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    .box {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 280px;
+    }
+
+    h2 { margin: 0 0 1rem; color: #333; }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    input:focus { border-color: #6366f1; }
+
+    button {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      background: #6366f1;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover { background: #4f46e5; }
+
+    #result {
+      margin-top: 1rem;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Even or Odd?</h2>
+    <input type="number" id="num" placeholder="Enter a number" />
+    <button onclick="check()">Check</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function check() {
+      const n = parseInt(document.getElementById('num').value);
+      const r = document.getElementById('result');
+      if (isNaN(n)) { r.textContent = 'Enter a valid number!'; r.style.color = 'red'; return; }
+      r.textContent = n + ' is ' + (n % 2 === 0 ? 'Even ✅' : 'Odd ❌');
+      r.style.color = n % 2 === 0 ? 'green' : 'orange';
+    }
+    document.getElementById('num').addEventListener('keydown', e => { if (e.key === 'Enter') check(); });
+  </script>
+</body>
+</html>
